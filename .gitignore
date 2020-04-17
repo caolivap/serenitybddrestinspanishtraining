@@ -11,3 +11,30 @@ buildNumber.properties
 *.iws
 *.iml
 .idea
+
+#Intellij files:
+.idea/
+.gradle/
+*.editorconfig
+
+#Gradle files:
+log/
+hooks/pre-push
+
+# Package Files #
+build/
+out/
+*.jar
+!gradle-wrapper.jar
+*.war
+*.nar
+*.ear
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+**/build/
+**/target/

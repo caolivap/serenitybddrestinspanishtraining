@@ -9,7 +9,7 @@ import com.testautomation.mesaj.tasks.GetUsers;
 import com.testautomation.mesaj.tasks.RegisterUser;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.rest.abiities.CallAnApi;
+import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
