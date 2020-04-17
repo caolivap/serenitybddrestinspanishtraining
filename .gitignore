@@ -1,4 +1,3 @@
-target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -23,6 +22,7 @@ hooks/pre-push
 
 # Package Files #
 build/
+target/
 out/
 *.jar
 !gradle-wrapper.jar
@@ -35,6 +35,3 @@ out/
 
 # Log file
 *.log
-
-**/build/
-**/target/
