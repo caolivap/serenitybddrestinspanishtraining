@@ -1,4 +1,5 @@
 import models.users.Datum;
+import models.users.UserInfo;
 import questions.GetUsersQuestion;
 import questions.ResponseCode;
 import tasks.GetUsers;
@@ -9,6 +10,8 @@ import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.serenitybdd.screenplay.rest.interactions.Get;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import tasks.RegisterUser;
+import tasks.UpdateUsers;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +23,7 @@ public class SerenityBddTests {
     private static final String restApiUrl = "http://localhost:5000/api";
 
     @Test
-    public void getUsers(){
+    public void getUsersTest() {
         Actor carlos = Actor.named("Carlos Oliva")
                 .whoCan(CallAnApi.at(restApiUrl));
 
@@ -47,7 +50,50 @@ public class SerenityBddTests {
     }
 
     @Test
-    public void getUsersFail(){
+    public void registerUserPostTest() {
+        Actor carlos = Actor.named("Carlos Oliva")
+                .whoCan(CallAnApi.at(restApiUrl));
+
+        String registerUserInfo = "{\n" +
+                "\t\"name\": \"Carlos\",\n" +
+                "\t\"job\": \"Tester\",\n" +
+                "    \"email\": \"charles.morris@reqres.in\",\n" +
+                "    \"password\": \"serenity\"\n" +
+                "}";
+
+        carlos.attemptsTo(
+                RegisterUser.withInfo(registerUserInfo)
+        );
+
+        carlos.should(
+                seeThat("el código de respuesta", ResponseCode.was(), equalTo(200))
+        );
+
+    }
+
+    @Test
+    public void registerUserPostTestWithModel() {
+        Actor carlos = Actor.named("Carlos Oliva")
+                .whoCan(CallAnApi.at(restApiUrl));
+
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName("Carlos");
+        userInfo.setJob("Tester");
+        userInfo.setEmail("charles.morris@reqres.in");
+        userInfo.setPassword("serenity");
+
+        carlos.attemptsTo(
+                RegisterUser.withInfo(userInfo)
+        );
+
+        carlos.should(
+                seeThat("el código de respuesta", ResponseCode.was(), equalTo(200))
+        );
+
+    }
+    
+    @Test
+    public void getUsersFail() {
         Actor carlos = Actor.named("Carlos Oliva")
                 .whoCan(CallAnApi.at(restApiUrl));
 
