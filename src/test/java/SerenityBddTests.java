@@ -2,6 +2,7 @@ import models.users.Datum;
 import models.users.UserInfo;
 import questions.GetUsersQuestion;
 import questions.ResponseCode;
+import questions.ResponseKey;
 import tasks.GetUsers;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.rest.SerenityRest;
@@ -91,7 +92,42 @@ public class SerenityBddTests {
         );
 
     }
-    
+
+    @Test
+    public void updateUserPutTest() {
+        Actor carlos = Actor.named("Carlos Oliva")
+                .whoCan(CallAnApi.at(restApiUrl));
+
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName("Carlos");
+        userInfo.setJob("Tester");
+        userInfo.setEmail("charles.morris@reqres.in");
+        userInfo.setPassword("serenity");
+
+        carlos.attemptsTo(
+                UpdateUsers.withInfo(userInfo)
+        );
+
+        carlos.should(
+                seeThat("el código de respuesta", ResponseCode.was(), equalTo(200))
+        );
+
+        UserInfo user = new ResponseKey().answeredBy(carlos);
+
+        carlos.should(
+                seeThat("el nombre del usuario", act -> user.getName(), notNullValue())
+        );
+
+        carlos.should(
+                seeThat("el job del usuario", act -> user.getJob(), notNullValue())
+        );
+
+        carlos.should(
+                seeThat("la fecha de actualización del usuario", act -> user.getUpdatedAt(), notNullValue())
+        );
+
+    }
+
     @Test
     public void getUsersFail() {
         Actor carlos = Actor.named("Carlos Oliva")

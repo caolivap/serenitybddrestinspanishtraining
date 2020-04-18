@@ -6,6 +6,7 @@ public class UserInfo {
     private String job;
     private String email;
     private String password;
+    private String updatedAt;
 
     public String getName() {
         return name;
@@ -37,6 +38,14 @@ public class UserInfo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }
