@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SerenityRunner.class)
-public class SerenityInitalTests {
+public class SerenityBddTests {
 
     private static final String restApiUrl = "http://localhost:5000/api";
 
@@ -20,7 +20,7 @@ public class SerenityInitalTests {
                 .whoCan(CallAnApi.at(restApiUrl));
 
         carlos.attemptsTo(
-                Get.resource("/users?page=2")
+                GetUsers.fromPage(3)
         );
 
         assertThat(SerenityRest.lastResponse().statusCode()).isEqualTo(200);
