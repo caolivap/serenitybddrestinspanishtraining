@@ -1,3 +1,4 @@
+import facts.NetflixPlans;
 import models.users.Datum;
 import models.users.UserInfo;
 import questions.GetUsersQuestion;
@@ -139,4 +140,14 @@ public class SerenityBddTests {
 
         assertThat(SerenityRest.lastResponse().statusCode()).isEqualTo(400);
     }
+
+    @Test
+    public void factTest() {
+        Actor carlos = Actor.named("Carlos Oliva")
+                .whoCan(CallAnApi.at(restApiUrl));
+
+        carlos.has(NetflixPlans.toViewSeries());
+
+    }
+
 }
