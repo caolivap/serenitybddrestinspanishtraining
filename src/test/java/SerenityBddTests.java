@@ -129,7 +129,7 @@ public class SerenityBddTests {
 
     }
 
-    @Test
+/*    @Test
     public void getUsersFail() {
         Actor carlos = Actor.named("Carlos Oliva")
                 .whoCan(CallAnApi.at(restApiUrl));
@@ -139,7 +139,7 @@ public class SerenityBddTests {
         );
 
         assertThat(SerenityRest.lastResponse().statusCode()).isEqualTo(400);
-    }
+    }*/
 
     @Test
     public void factTest() {
