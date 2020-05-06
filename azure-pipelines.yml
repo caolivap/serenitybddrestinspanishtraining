@@ -10,6 +10,6 @@ pool:
   name: 'caolivap Pool'
 
 steps:
-- bash: |
-    gradle -v
-  displayName: Multiline Bash script
+- task: CmdLine@2
+  inputs:
+    script: 'gradle -v' 
