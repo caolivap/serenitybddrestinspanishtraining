@@ -12,4 +12,4 @@ pool:
 steps:
 - task: CmdLine@2
   inputs:
-    script: 'gradle -v' 
+    script: 'gradle clean test aggregate' 
