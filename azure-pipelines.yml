@@ -9,7 +9,6 @@ trigger:
 pool:
   name: 'caolivap Pool'
   demands:
-  - 'System capabilities'
   - Agent.Name -equals 'caolivap Agent'
 
 steps:
