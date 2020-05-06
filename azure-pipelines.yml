@@ -11,6 +11,5 @@ pool:
 
 steps:
 - bash: |
-    which bash
     gradle -v
   displayName: Multiline Bash script
