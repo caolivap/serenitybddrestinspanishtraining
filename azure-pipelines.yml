@@ -8,8 +8,6 @@ trigger:
 
 pool:
   name: 'caolivap Pool'
-  demands:
-  - Agent.Name -equals 'caolivap Agent'
 
 steps:
 - task: Gradle@2
