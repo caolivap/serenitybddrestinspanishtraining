@@ -7,7 +7,7 @@ trigger:
 - feature/caoliva
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'caolivap Pool'
 
 steps:
 - task: Gradle@2
